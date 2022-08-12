@@ -8,13 +8,27 @@
 import SwiftUI
 
 struct ForecastView: View {
+    var bottomSheetTranslationProrated: CGFloat = 1
+    @State private var selection = 0
+    
     var body: some View {
         ScrollView {
-            
+            VStack(spacing: 20) {
+                //MARK: - Segmented Control
+                SegmentedController(selection: $selection)
+            }
         }
         .backgroundBlur(radius: 25, opaque: true)
         .background(Color.bottomSheetBackground)
         .clipShape(RoundedRectangle(cornerRadius: 44))
+        .innerShadow(shape: RoundedRectangle(cornerRadius: 44),
+                     color: Color.bottomSheetBorderMiddle,
+                     lineWidth: 1,
+                     offsetX: 0,
+                     offsetY: 1,
+                     blur: 0,
+                     blendNode: .overlay,
+                     opacity: 1 - bottomSheetTranslationProrated)
         .overlay {
             //MARK: - Bottom Sheet Separator
             Divider()
