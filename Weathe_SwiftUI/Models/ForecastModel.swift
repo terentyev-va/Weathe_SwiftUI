@@ -9,7 +9,7 @@ import Foundation
 
 enum ForecastPeriod {
     case hourly
-    case weekly
+    case daily
 }
 
 enum Weather: String {
@@ -103,7 +103,7 @@ extension Forecast {
                  location: "Montreal, Canada")
     ]
     
-    static let weekly: [Forecast] = [
+    static let daily: [Forecast] = [
         Forecast(date: .init(timeIntervalSinceNow: 0),
                  weather: .rainy, probability: 30,
                  temperature: 19,
